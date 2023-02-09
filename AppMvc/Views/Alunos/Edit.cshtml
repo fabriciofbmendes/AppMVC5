@@ -1,10 +1,10 @@
 ﻿@model AppMvc.Models.Aluno
 
 @{
-    ViewBag.Title = "Editar Aluno";
+    ViewBag.Title = "Editar Aluno " + Model.Nome;
 }
 
-<h2>Editar Aluno</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Edição do Aluno @Model.Nome</h4>
+    <h4>Preencha os Campos corretamente</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Id)

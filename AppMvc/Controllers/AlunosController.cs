@@ -59,6 +59,8 @@ namespace AppMvc.Controllers
                 aluno.DataMatricula = DateTime.Now;
                 db.Alunos.Add(aluno);
                 await db.SaveChangesAsync();
+                TempData["Mensagem"] = "Aluno Cadastrado com Sucesso";
+
                 return RedirectToAction("Index");
             }
 
@@ -93,6 +95,8 @@ namespace AppMvc.Controllers
                 db.Entry(aluno).State = EntityState.Modified;
                 db.Entry(aluno).Property(a => a.DataMatricula).IsModified = false;
                 await db.SaveChangesAsync();
+
+                TempData["Mensagem"] = "Aluno Editado com Sucesso";
                 return RedirectToAction("Index");
             }
             return View(aluno);

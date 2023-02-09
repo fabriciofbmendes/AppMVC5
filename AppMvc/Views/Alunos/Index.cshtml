@@ -4,6 +4,15 @@
     ViewBag.Title = "Gestão de Alunos";
 }
 
+
+@if(TempData["Mensagem"] != null)
+{
+  <div class="alert alert-success">
+     <button type="button" class="close" data-dismiss="alert">x</button>
+      <h3>@TempData["Mensagem"].ToString()</h3>
+  </div>
+}
+
 <h2>Gestao de Alunos</h2>
 
 <a href="@Url.Action("Create")" class="btn btn-primary">Novo Aluno</a>
