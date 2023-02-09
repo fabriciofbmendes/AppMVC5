@@ -1,0 +1,4 @@
+
+.gitattributes
+AppMvc/App_Data/AppFuncional.mdf
+AppMvc/App_Data/AppFuncional_log.ldf
