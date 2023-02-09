@@ -11,12 +11,15 @@ using AppMvc.Models;
 
 namespace AppMvc.Controllers
 {
+    [Authorize]
     public class AlunosController : Controller
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Alunos
         [HttpGet]
+        [AllowAnonymous]
+        [OutputCache(Duration =60)]
         [Route("listar-alunos")]
         public async Task<ActionResult> Index()
         {
@@ -51,6 +54,8 @@ namespace AppMvc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HandleError(ExceptionType =typeof(NullReferenceException),View = "Erro")]
+        [ValidateInput(false)]
         [Route("novo-aluno")]
         public async Task<ActionResult> Create([Bind(Include = "Id,Nome,Email,Descricao,CPF,Ativo")] Aluno aluno)
         {
