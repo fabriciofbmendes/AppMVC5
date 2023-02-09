@@ -20,5 +20,6 @@
 input,
 select,
 textarea {
+    font-family:inherit;
     max-width: 280px;
 }
